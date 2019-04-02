@@ -5,22 +5,20 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".TabBarActivity">
 
     <android.support.v7.widget.Toolbar
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:id="@+id/main_toolbar"
+            android:layout_alignParentTop="true"
+            android:id="@+id/tabbar_toolbar"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:id="@+id/button_start"
-            style="@style/button_style"
-            android:text="@string/button_start_text"
-            android:onClick="start"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="@color/primaryDark"
+              android:text="chuj"/>
 
 </RelativeLayout>

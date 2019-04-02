@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AwareWolf</string>
+    <string name="action_info">Informacje o aplikacji</string>
+    <string name="action_help">Pomoc</string>
+    <string name="action_contact">Skontaktuj się z nami</string>
+    <string name="action_home">Ekran główny</string>
+    <string name="button_start_text">Rozpocznij</string>
 </resources>

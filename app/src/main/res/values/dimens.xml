@@ -1,0 +1,35 @@
+<resources>
+    <!-- MARGINS -->
+    <dimen name="toolbar_margin">5dp</dimen>
+    <dimen name="window_top_margin">20dp</dimen>
+
+    <!-- PADDINGS -->
+    <dimen name="window_padding">15dp</dimen>
+    <dimen name="button_padding">16dp</dimen>
+
+    <!-- FONTS -->
+    <dimen name="text_size_h1">40sp</dimen>        <!-- session name - 32 chars -->
+    <dimen name="text_size_h1_step_1">36sp</dimen> <!-- session name - 36 chars -->
+    <dimen name="text_size_h1_step_2">32sp</dimen> <!-- session name - 38 chars -->
+    <dimen name="text_size_h1_step_3">28sp</dimen> <!-- session name - 48 chars -->
+    <dimen name="text_size_h1_step_4">24sp</dimen> <!-- session name - 52 chars -->
+    <dimen name="text_size_h1_step_5">20sp</dimen> <!-- session name - 68 chars -->
+    <dimen name="text_size_h2">30sp</dimen>
+    <dimen name="text_size_h3">24sp</dimen>
+    <dimen name="text_size_content">16sp</dimen>
+    <dimen name="text_size_alert">14sp</dimen>
+    <dimen name="text_size_path">12sp</dimen>
+
+    <!-- SIZE -->
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="divider_height">3dp</dimen>
+    <dimen name="toolbar_icon_size">24dp</dimen>
+    <dimen name="toolbar_icon_middle_size">32dp</dimen>
+    <dimen name="main_chart_height">180dp</dimen>
+    <dimen name="session_chart_width">180dp</dimen>
+    <dimen name="session_chart_height">180dp</dimen>
+    <dimen name="question_additional_actions_height">48dp</dimen>
+    <dimen name="question_buttons_height">64dp</dimen>
+    <dimen name="question_icons_size">40dp</dimen>
+
+</resources>
