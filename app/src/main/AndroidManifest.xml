@@ -13,8 +13,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme.Launcher"
             tools:ignore="GoogleAppIndexingWarning">
+
         <activity android:name=".ImageActivity"
+                  android:theme="@style/AppTheme.NoActionBar"
                   android:screenOrientation="portrait"/>
+
         <activity android:name=".TabBarActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity"

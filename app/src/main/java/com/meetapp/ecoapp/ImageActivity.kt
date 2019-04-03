@@ -14,18 +14,18 @@ private const val TAG = "IA"
 class ImageActivity : AppCompatActivity() {
 
     lateinit var view: ImageView
-    private val TAG = "ImageDialog"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image)
 
+        if (supportActionBar != null)
+            supportActionBar!!.hide()
+
         view = findViewById(R.id.photo_view)
         view.isClickable = true
-        view.setOnClickListener {
-            finish()
-        }
+        view.setOnClickListener { finish() }
 
         val extras =  intent.extras
         if (extras == null) {
@@ -41,10 +41,9 @@ class ImageActivity : AppCompatActivity() {
             finish()
         }
 
-
         Log.d(TAG, "Showing image from: $url")
         Picasso.get().load(url).into(view)
-        val attacher = PhotoViewAttacher(view)
+        PhotoViewAttacher(view)
     }
 
 
