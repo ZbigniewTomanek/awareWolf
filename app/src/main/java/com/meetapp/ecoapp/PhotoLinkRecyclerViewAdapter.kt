@@ -10,10 +10,10 @@ import android.widget.TextView
 import com.meetapp.ecoapp.PhotoFragment.OnListFragmentInteractionListener
 import kotlinx.android.synthetic.main.fragment_item.view.*
 
-class MyItemRecyclerViewAdapter(
+class PhotoLinkRecyclerViewAdapter(
     private val mValues: List<PhotoLink>,
     private val mListener: OnListFragmentInteractionListener?
-) : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<PhotoLinkRecyclerViewAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
@@ -32,7 +32,6 @@ class MyItemRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = position.toString()
         holder.mContentView.text = item.name
 
         with(holder.mView) {
@@ -44,7 +43,6 @@ class MyItemRecyclerViewAdapter(
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
         val mContentView: TextView = mView.content
 
         override fun toString(): String {

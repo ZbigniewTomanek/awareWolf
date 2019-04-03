@@ -18,6 +18,16 @@
 
     </style>
 
+    <style name="list_item_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_h2</item>
+        <item name="android:layout_margin">@dimen/window_top_margin</item>
+        <item name="android:textColor">@color/accentDark</item>
+        <item name="android:background">@color/primary</item>
+    </style>
+
     <style name="toolbar_style">
         <item name="android:layout_marginBottom">@dimen/toolbar_margin</item>
         <item name="android:layout_width">match_parent</item>
@@ -28,10 +38,18 @@
         <item name="android:background">@drawable/button</item>
         <item name="android:textSize">@dimen/text_size_content</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/primaryDark</item>
+        <item name="android:textColor">@color/accentDark</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="session_chart_style">
+        <item name="android:layout_width">@dimen/session_chart_width</item>
+        <item name="android:layout_height">@dimen/session_chart_height</item>
+        <item name="android:layout_marginTop">@dimen/session_chart_margin</item>
+        <item name="android:layout_marginBottom">@dimen/session_chart_margin</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
 </resources>

@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">AwareWolf</string>
-    <string name="action_info">Informacje o aplikacji</string>
-    <string name="action_help">Pomoc</string>
-    <string name="action_contact">Skontaktuj się z nami</string>
+    <string name="action_info">Informacje o mnie</string>
+    <string name="action_contact">Skontaktuj się ze mną</string>
     <string name="action_home">Ekran główny</string>
-    <string name="button_start_text">Rozpocznij</string>
+    <string name="button_start_text">Rozważ</string>
+    <string name="user_good_choices">ugc</string>
+    <string name="user_bad_choices">ubc</string>
+    <string name="message_main">Co wybierasz Ty?</string>
 </resources>

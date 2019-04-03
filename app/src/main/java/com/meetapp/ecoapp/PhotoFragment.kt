@@ -10,13 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.meetapp.ecoapp.models.PhotoLink
 
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [PhotoFragment.OnListFragmentInteractionListener] interface.
- */
 class PhotoFragment : Fragment() {
 
     private var columnCount = 1
@@ -45,7 +39,7 @@ class PhotoFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyItemRecyclerViewAdapter(photoItems, listener)
+                adapter = PhotoLinkRecyclerViewAdapter(photoItems, listener)
             }
         }
         return view

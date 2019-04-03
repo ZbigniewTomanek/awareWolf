@@ -7,10 +7,26 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_margin="@dimen/window_top_margin"
+              android:text="@string/message_main"
+              android:textSize="@dimen/text_size_h2"
+              android:textColor="@color/accentDark"
+              android:gravity="center"/>
 
-    <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <LinearLayout
+            android:id="@+id/pieChartView"
+            style="@style/session_chart_style"
             android:layout_centerInParent="true"
+            android:orientation="vertical" />
+
+
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_alignParentBottom="true"
             android:id="@+id/button_start"
             style="@style/button_style"
             android:text="@string/button_start_text"

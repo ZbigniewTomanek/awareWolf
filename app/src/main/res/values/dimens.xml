@@ -2,6 +2,7 @@
     <!-- MARGINS -->
     <dimen name="toolbar_margin">5dp</dimen>
     <dimen name="window_top_margin">20dp</dimen>
+    <dimen name="session_chart_margin">16dp</dimen>
 
     <!-- PADDINGS -->
     <dimen name="window_padding">15dp</dimen>

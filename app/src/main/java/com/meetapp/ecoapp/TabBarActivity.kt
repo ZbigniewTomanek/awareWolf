@@ -3,11 +3,11 @@ package com.meetapp.ecoapp
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
-import com.meetapp.ecoapp.models.PhotoLink
 
 
 private const val TAG = "TBB"
@@ -19,11 +19,13 @@ class TabBarActivity : AppCompatActivity(), PhotoFragment.OnListFragmentInteract
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
+
+        if (supportActionBar != null)
+            supportActionBar!!.setDisplayShowTitleEnabled(false)
         setContentView(R.layout.activity_tab_bar)
 
         viewPager = findViewById(R.id.pager)
         tabs = findViewById(R.id.tabs)
-
 
         val fa = PagerAdapter(supportFragmentManager)
         viewPager.adapter = fa
@@ -47,6 +49,16 @@ class TabBarActivity : AppCompatActivity(), PhotoFragment.OnListFragmentInteract
     }
 
     override fun onListFragmentInteraction(item: PhotoLink) {
+        when (tabs.selectedTabPosition) {
+            1 -> {
+                val curr = PreferenceManager.getDefaultSharedPreferences(this).getInt(getString(R.string.user_bad_choices), 1)
+                PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(getString(R.string.user_bad_choices), curr + 1).apply()
+            }
+            2 -> {
+                val curr = PreferenceManager.getDefaultSharedPreferences(this).getInt(getString(R.string.user_good_choices), 1)
+                PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(getString(R.string.user_good_choices), curr + 1).apply()
+            }
+        }
         val intent = Intent(this, ImageActivity::class.java).apply { putExtra(IMG_URL_EXTRAS, item.url) }
         startActivity(intent)
     }
