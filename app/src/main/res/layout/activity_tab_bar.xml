@@ -7,18 +7,17 @@
         android:layout_height="match_parent"
         tools:context=".TabBarActivity">
 
-    <android.support.v7.widget.Toolbar
-            android:layout_height="wrap_content"
+    <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:id="@+id/tabbar_toolbar"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            android:layout_height="wrap_content"
+            app:tabMode="fixed" />
 
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="@color/primaryDark"
-              android:text="chuj"/>
+
+    <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 </RelativeLayout>

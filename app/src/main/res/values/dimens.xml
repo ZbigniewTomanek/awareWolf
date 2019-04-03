@@ -31,5 +31,6 @@
     <dimen name="question_additional_actions_height">48dp</dimen>
     <dimen name="question_buttons_height">64dp</dimen>
     <dimen name="question_icons_size">40dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

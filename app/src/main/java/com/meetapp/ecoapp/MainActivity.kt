@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.main_toolbar))
-        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -42,6 +40,11 @@ class MainActivity : AppCompatActivity() {
 
     fun start(view: View) {
         val intent = Intent(this, TabBarActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun showPhoto(url: String) {
+        val intent = Intent(this, ImageActivity::class.java).apply { putExtra(IMG_URL_EXTRAS, url) }
         startActivity(intent)
     }
 }
