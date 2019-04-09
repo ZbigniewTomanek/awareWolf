@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun start(view: View) {
-        val intent = Intent(this, TabBarActivity::class.java)
+        val intent = Intent(this, CameraActivity::class.java) //TODO
         startActivity(intent)
     }
 

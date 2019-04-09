@@ -22,6 +22,7 @@ class TabBarActivity : AppCompatActivity(), PhotoFragment.OnListFragmentInteract
 
         if (supportActionBar != null)
             supportActionBar!!.setDisplayShowTitleEnabled(false)
+
         setContentView(R.layout.activity_tab_bar)
 
         viewPager = findViewById(R.id.pager)

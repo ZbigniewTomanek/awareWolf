@@ -7,14 +7,15 @@
     <!-- PADDINGS -->
     <dimen name="window_padding">15dp</dimen>
     <dimen name="button_padding">16dp</dimen>
+    <dimen name="image_button_padding">20dp</dimen>
 
     <!-- FONTS -->
-    <dimen name="text_size_h1">40sp</dimen>        <!-- session name - 32 chars -->
-    <dimen name="text_size_h1_step_1">36sp</dimen> <!-- session name - 36 chars -->
-    <dimen name="text_size_h1_step_2">32sp</dimen> <!-- session name - 38 chars -->
-    <dimen name="text_size_h1_step_3">28sp</dimen> <!-- session name - 48 chars -->
-    <dimen name="text_size_h1_step_4">24sp</dimen> <!-- session name - 52 chars -->
-    <dimen name="text_size_h1_step_5">20sp</dimen> <!-- session name - 68 chars -->
+    <dimen name="text_size_h1">40sp</dimen>
+    <dimen name="text_size_h1_step_1">36sp</dimen>
+    <dimen name="text_size_h1_step_2">32sp</dimen>
+    <dimen name="text_size_h1_step_3">28sp</dimen>
+    <dimen name="text_size_h1_step_4">24sp</dimen>
+    <dimen name="text_size_h1_step_5">20sp</dimen>
     <dimen name="text_size_h2">30sp</dimen>
     <dimen name="text_size_h3">24sp</dimen>
     <dimen name="text_size_content">16sp</dimen>

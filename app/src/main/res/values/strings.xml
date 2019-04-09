@@ -7,4 +7,16 @@
     <string name="user_good_choices">ugc</string>
     <string name="user_bad_choices">ubc</string>
     <string name="message_main">Co wybierasz Ty?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="picture">Zdjęcie</string>
+    <string name="description_info">Info</string>
+    <string name="request_permission">Zezwolić aplkiacji na dostęp do aparatu?</string>
+    <string name="camera_error">To urządzenie posiada niekompatybilny system</string>
+    <string name="config_error">Błąd</string>
+    <string name="photo_success">Zapisano plik!</string>
+    <string name="switch_internal_storage">ROM</string>
+    <string name="switch_external_storage">SD</string>
+    <string name="switch_storage_label">Zapis na karcie SD</string>
 </resources>
