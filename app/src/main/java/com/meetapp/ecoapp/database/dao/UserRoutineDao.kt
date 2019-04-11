@@ -7,6 +7,9 @@ import android.arch.persistence.room.Query
 import com.meetapp.ecoapp.database.entities.UserRoutine
 
 interface UserRoutineDao {
+    @get:Query("SELECT * FROM user_routines")
+    val all: List<UserRoutine>
+
     @Insert
     fun saveUserRoutine(routine: UserRoutine)
 

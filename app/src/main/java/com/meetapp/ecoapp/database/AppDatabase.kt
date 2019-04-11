@@ -16,7 +16,7 @@ abstract class AppDatabase: RoomDatabase() {
 
     abstract fun routineDao(): RoutineDao
 
-    abstract fun routineResourceJoin(): RoutineResourceJoinDao
+    abstract fun routineResourceJoinDao(): RoutineResourceJoinDao
 
     abstract fun userRoutineDao(): UserRoutineDao
 

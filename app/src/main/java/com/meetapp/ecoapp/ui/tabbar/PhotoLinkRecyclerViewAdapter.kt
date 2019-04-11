@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp
+package com.meetapp.ecoapp.ui.tabbar
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 
-import com.meetapp.ecoapp.PhotoFragment.OnListFragmentInteractionListener
+import com.meetapp.ecoapp.ui.tabbar.PhotoFragment.OnListFragmentInteractionListener
+import com.meetapp.ecoapp.R
 import kotlinx.android.synthetic.main.fragment_item.view.*
 
 class PhotoLinkRecyclerViewAdapter(

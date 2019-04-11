@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp
+package com.meetapp.ecoapp.ui.tabbar
 
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.meetapp.ecoapp.R
 
 
 class PhotoFragment : Fragment() {

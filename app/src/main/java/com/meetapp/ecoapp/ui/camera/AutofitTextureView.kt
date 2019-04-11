@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp
+package com.meetapp.ecoapp.ui.camera
 
 import android.content.Context
 import android.util.AttributeSet

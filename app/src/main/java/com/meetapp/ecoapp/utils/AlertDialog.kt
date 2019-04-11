@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp
+package com.meetapp.ecoapp.utils
 
 import android.app.AlertDialog
 import android.app.Dialog

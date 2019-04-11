@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp
+package com.meetapp.ecoapp.ui.camera
 
 import android.util.Size
 import java.lang.Long.signum

@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp
+package com.meetapp.ecoapp.ui
 
 import android.content.Intent
 import android.graphics.Color
@@ -11,6 +11,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
+import com.meetapp.ecoapp.R
+import com.meetapp.ecoapp.ui.camera.CameraActivity
 import org.achartengine.GraphicalView
 import org.achartengine.chart.PieChart
 import org.achartengine.model.CategorySeries

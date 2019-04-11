@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp
+package com.meetapp.ecoapp.ui.camera
 
 import android.Manifest
 import android.content.Context
@@ -36,6 +36,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.ToggleButton
+import com.meetapp.ecoapp.*
+import com.meetapp.ecoapp.utils.ConfirmationDialog
+import com.meetapp.ecoapp.utils.ErrorDialog
 import java.io.File
 import java.util.*
 import java.util.concurrent.Semaphore
@@ -289,7 +292,8 @@ class CameraFragment : Fragment(), View.OnClickListener,
 
     private fun requestCameraPermission() {
         if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
-            ConfirmationDialog().show(childFragmentManager, FRAGMENT_DIALOG)
+            ConfirmationDialog()
+                .show(childFragmentManager, FRAGMENT_DIALOG)
         } else {
             requestPermissions(arrayOf(Manifest.permission.CAMERA), REQUEST_CAMERA_PERMISSION)
         }
@@ -333,7 +337,8 @@ class CameraFragment : Fragment(), View.OnClickListener,
                 // For still image captures, we use the largest available size.
                 val largest = Collections.max(
                     Arrays.asList(*map.getOutputSizes(ImageFormat.JPEG)),
-                    CompareSizesByArea())
+                    CompareSizesByArea()
+                )
                 imageReader = ImageReader.newInstance(largest.width, largest.height,
                     ImageFormat.JPEG, /*maxImages*/ 2).apply {
                     setOnImageAvailableListener(onImageAvailableListener, backgroundHandler)
@@ -353,16 +358,20 @@ class CameraFragment : Fragment(), View.OnClickListener,
                 var maxPreviewWidth = if (swappedDimensions) displaySize.y else displaySize.x
                 var maxPreviewHeight = if (swappedDimensions) displaySize.x else displaySize.y
 
-                if (maxPreviewWidth > MAX_PREVIEW_WIDTH) maxPreviewWidth = MAX_PREVIEW_WIDTH
-                if (maxPreviewHeight > MAX_PREVIEW_HEIGHT) maxPreviewHeight = MAX_PREVIEW_HEIGHT
+                if (maxPreviewWidth > MAX_PREVIEW_WIDTH) maxPreviewWidth =
+                    MAX_PREVIEW_WIDTH
+                if (maxPreviewHeight > MAX_PREVIEW_HEIGHT) maxPreviewHeight =
+                    MAX_PREVIEW_HEIGHT
 
                 // Danger, W.R.! Attempting to use too large a preview size could  exceed the camera
                 // bus' bandwidth limitation, resulting in gorgeous previews but the storage of
                 // garbage capture data.
-                previewSize = chooseOptimalSize(map.getOutputSizes(SurfaceTexture::class.java),
+                previewSize = chooseOptimalSize(
+                    map.getOutputSizes(SurfaceTexture::class.java),
                     rotatedPreviewWidth, rotatedPreviewHeight,
                     maxPreviewWidth, maxPreviewHeight,
-                    largest)
+                    largest
+                )
 
                 // We fit the aspect ratio of TextureView to the size of preview we picked.
                 if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -815,6 +824,7 @@ class CameraFragment : Fragment(), View.OnClickListener,
             }
         }
 
-        @JvmStatic fun newInstance(): CameraFragment = CameraFragment()
+        @JvmStatic fun newInstance(): CameraFragment =
+            CameraFragment()
     }
 }

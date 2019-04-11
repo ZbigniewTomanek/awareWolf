@@ -11,23 +11,24 @@
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
+            android:name=".utils.RoomApplication"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme.Launcher"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".CameraActivity"
+        <activity android:name="com.meetapp.ecoapp.ui.camera.CameraActivity"
                   android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.Camera"/>
         <activity
-                android:name=".ImageActivity"
+                android:name=".ui.ImageActivity"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-                android:name=".TabBarActivity"
+                android:name=".ui.tabbar.TabBarActivity"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".MainActivity"
+                android:name=".ui.MainActivity"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

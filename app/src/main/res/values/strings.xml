@@ -19,4 +19,14 @@
     <string name="switch_internal_storage">ROM</string>
     <string name="switch_external_storage">SD</string>
     <string name="switch_storage_label">Zapis na karcie SD</string>
+    <string name="day">Dzień</string>
+    <string name="week">Tydzień</string>
+    <string name="month">Miesiąc</string>
+    <string name="water">Woda</string>
+    <string name="gas">Gaz</string>
+    <string name="plastic">Plastik</string>
+    <string name="fuel">Paliwo</string>
+    <string name="routine_teeth_brush">Zakręcanie wody podczas mycia zębów</string>
+    <string name="routine_bicycling_to_work">Dojazd do pracy na rowerze</string>
+    <string name="routine_no_plastic_bags">Pozbycie się plastikowych toreb</string>
 </resources>

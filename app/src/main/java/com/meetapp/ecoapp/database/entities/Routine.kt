@@ -13,7 +13,7 @@ import android.arch.persistence.room.PrimaryKey
                  childColumns = arrayOf("freqId"),
                  onDelete = ForeignKey.NO_ACTION
              )])
-class Routine constructor(name: String, freqId: Int) {
+class Routine constructor(name: String, freqId: Int, amount: Double) {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -21,6 +21,9 @@ class Routine constructor(name: String, freqId: Int) {
 
     @ColumnInfo(name = "name")
     var routineName: String = name
+
+    @ColumnInfo(name = "amount")
+    var amountSaved: Double = amount
 
     @ColumnInfo(name = "frequencyId")
     var freqId: Int = freqId

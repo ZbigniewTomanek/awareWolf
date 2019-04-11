@@ -1,7 +1,8 @@
-package com.meetapp.ecoapp
+package com.meetapp.ecoapp.ui.camera
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.meetapp.ecoapp.R
 
 class CameraActivity : AppCompatActivity() {
 

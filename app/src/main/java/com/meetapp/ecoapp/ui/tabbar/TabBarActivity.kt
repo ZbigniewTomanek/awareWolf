@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp
+package com.meetapp.ecoapp.ui.tabbar
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +8,10 @@ import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
+import com.meetapp.ecoapp.R
+import com.meetapp.ecoapp.ui.IMG_URL_EXTRAS
+import com.meetapp.ecoapp.ui.ImageActivity
+import com.meetapp.ecoapp.ui.MainActivity
 
 
 private const val TAG = "TBB"
