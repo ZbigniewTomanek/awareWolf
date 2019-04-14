@@ -1,9 +1,12 @@
 package com.meetapp.ecoapp.database.dao
 
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
 import com.meetapp.ecoapp.database.entities.RoutineResourceJoin
 
+@Dao
 interface RoutineResourceJoinDao {
     @get:Query("SELECT * FROM routine_resource_join")
     val all: List<RoutineResourceJoin>

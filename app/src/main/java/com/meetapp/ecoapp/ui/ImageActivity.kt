@@ -1,13 +1,14 @@
 package com.meetapp.ecoapp.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.meetapp.ecoapp.R
 import com.squareup.picasso.Picasso
 import uk.co.senab.photoview.PhotoViewAttacher
+
 
 const val IMG_URL_EXTRAS = "imgUrl"
 private const val TAG = "IA"

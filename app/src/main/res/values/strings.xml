@@ -29,4 +29,16 @@
     <string name="routine_teeth_brush">Zakręcanie wody podczas mycia zębów</string>
     <string name="routine_bicycling_to_work">Dojazd do pracy na rowerze</string>
     <string name="routine_no_plastic_bags">Pozbycie się plastikowych toreb</string>
+    <string name="delete">Usuń</string>
+    <string name="title">Nazwa</string>
+    <string name="content">Zawartość</string>
+    <string name="save">Zapisz</string>
+    <string name="search">Szukaj</string>
+    <string name="enter_title">Nazwa rutyny</string>
+    <string name="enter_content">Podaj ilość zasobu</string>
+    <string name="resource_spinner_prompt">Wybierz zasób</string>
+    <string name="please_enter_title">Wprowadź nazwę</string>
+    <string name="please_enter_amount">Wprowadź wartosć</string>
+    <string name="please_select_category">Wybierz kategorie</string>
+    <string name="frequency_spinner_prompt">Wybierz częstotliwość</string>
 </resources>

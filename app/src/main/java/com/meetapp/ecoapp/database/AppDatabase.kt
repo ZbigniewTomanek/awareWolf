@@ -1,11 +1,13 @@
 package com.meetapp.ecoapp.database
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
+
 import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.meetapp.ecoapp.database.dao.*
 import com.meetapp.ecoapp.database.entities.*
+import java.lang.Exception
 
 @Database(entities = [(Frequency::class), (Resource::class), (Routine::class), (RoutineResourceJoin::class), (UserRoutine::class)], version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
@@ -23,6 +25,7 @@ abstract class AppDatabase: RoomDatabase() {
     companion object {
 
         private var INSTANCE: AppDatabase? = null
+
 
         @Synchronized
         fun getInstance(ctx: Context): AppDatabase {

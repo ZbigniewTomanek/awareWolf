@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                     android:layout_width="match_parent"
+                                                     android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/routine_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+            <EditText
+                    android:id="@+id/et_routine_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:hint="@string/enter_title"
+                    android:singleLine="true"
+                    android:textStyle="bold" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/routine_amount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1">
+
+            <EditText
+                    android:id="@+id/et_routine_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:hint="@string/enter_content"
+                    android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+                android:id="@+id/resources"
+                android:layout_width="match_parent" 
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp">
+
+            <Spinner
+                    android:id="@+id/sp_resources"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:prompt="@string/resource_spinner_prompt"/>
+            
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:id="@+id/frequency"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp">
+
+            <Spinner
+                    android:id="@+id/sp_frequency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:prompt="@string/frequency_spinner_prompt"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

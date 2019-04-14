@@ -1,13 +1,13 @@
 package com.meetapp.ecoapp.ui.tabbar
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.support.design.widget.TabLayout
-import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.meetapp.ecoapp.R
 import com.meetapp.ecoapp.ui.IMG_URL_EXTRAS
 import com.meetapp.ecoapp.ui.ImageActivity

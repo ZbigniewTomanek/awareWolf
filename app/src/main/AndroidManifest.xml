@@ -4,22 +4,27 @@
           package="com.meetapp.ecoapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
 
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
-            android:name=".utils.RoomApplication"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme.Launcher"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.meetapp.ecoapp.ui.camera.CameraActivity"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/AppTheme.Camera"/>
+        <activity android:name=".ui.createRoutine.CreateRoutineActivity">
+        </activity>
+        <activity android:name=".ui.routines.RoutinesListActivity">
+        </activity>
+        <activity
+                android:name=".ui.camera.CameraActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.Camera"/>
         <activity
                 android:name=".ui.ImageActivity"
                 android:screenOrientation="portrait"

@@ -1,11 +1,12 @@
 package com.meetapp.ecoapp.database.entities
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "resources")
-class Resource constructor(name: String, co2Impact_kg: Int = 0){
+class Resource constructor(name: String = "", co2Impact_kg: Int = 0) {
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)

@@ -3,16 +3,17 @@ package com.meetapp.ecoapp.ui
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.meetapp.ecoapp.R
 import com.meetapp.ecoapp.ui.camera.CameraActivity
+import com.meetapp.ecoapp.ui.routines.RoutinesListActivity
 import org.achartengine.GraphicalView
 import org.achartengine.chart.PieChart
 import org.achartengine.model.CategorySeries
@@ -134,7 +135,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun start(view: View) {
-        val intent = Intent(this, CameraActivity::class.java) //TODO
+        val intent = Intent(this, RoutinesListActivity::class.java) //TODO
         startActivity(intent)
     }
 
