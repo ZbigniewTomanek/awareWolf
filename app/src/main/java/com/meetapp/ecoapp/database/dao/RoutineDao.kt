@@ -1,10 +1,7 @@
 package com.meetapp.ecoapp.database.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.meetapp.ecoapp.database.entities.Routine
 
 @Dao
@@ -29,6 +26,9 @@ interface RoutineDao {
 
     @Insert
     fun insert(routine: Routine)
+
+    @Update
+    fun update(routine: Routine)
 
     @Delete
     fun delete(routine: Routine)

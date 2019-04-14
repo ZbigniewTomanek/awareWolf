@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp.ui
+package com.meetapp.ecoapp.ui.tabbar
 
 import android.os.Bundle
 import android.util.Log

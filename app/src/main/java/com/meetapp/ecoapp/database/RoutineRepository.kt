@@ -18,7 +18,7 @@ import kotlinx.coroutines.runBlocking
 
 private const val TAG = "RoutineRepository"
 
-class RoutineRepository(application: Application) {
+class RoutineRepository private constructor (application: Application) {
 
     private val routineDao: RoutineDao
     private val resourceDao: ResourceDao
@@ -30,6 +30,18 @@ class RoutineRepository(application: Application) {
     private lateinit var allFrequencies: List<Frequency>
     private lateinit var allResources: List<Resource>
     private lateinit var allrrJoin: List<RoutineResourceJoin>
+
+    companion object {
+        private var INSTANCE: RoutineRepository? = null
+
+        fun initInstance(application: Application) {
+            if (INSTANCE == null)
+                INSTANCE = RoutineRepository(application)
+        }
+
+        fun instance(): RoutineRepository = if (INSTANCE == null) throw Exception() else INSTANCE!!
+
+    }
 
     init {
         val database = AppDatabase.getInstance(application.applicationContext)
@@ -119,6 +131,12 @@ class RoutineRepository(application: Application) {
         }
     }
 
+    fun updateRoutine(routine: Routine) = runBlocking {
+        this.launch(Dispatchers.IO) {
+            routineDao.update(routine)
+        }
+    }
+
     fun getAllRoutinesAsList() = allRoutinesList
 
     fun deleteRoutine(routine: Routine) = runBlocking {
@@ -168,21 +186,12 @@ class RoutineRepository(application: Application) {
         return allResources.map { if (it.resourceId in ids) it.resourceName else ""}.filter { it != "" }
     }
 
+    fun getFrequencyName(freqId: Int): String = allFrequencies.filter { it.freqId == freqId }.map { it.name }[0] ?: ""
+
+
 
     fun getAllRoutinesList() = allRoutines
     fun getAllResources() = allResources
     fun getAllFrequenciesList() = allFrequencies
     fun getAllrrJoins() = allrrJoin
-
-    companion object {
-        private var INSTANCE: RoutineRepository? = null
-
-        fun initInstance(application: Application) {
-            if (INSTANCE == null)
-                INSTANCE = RoutineRepository(application)
-        }
-
-        fun instance(): RoutineRepository = if (INSTANCE == null) throw Exception() else INSTANCE!!
-
-    }
 }

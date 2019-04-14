@@ -7,7 +7,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="5dp">
+            android:padding="15dp">
 
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/routine_title"
@@ -30,10 +30,9 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/routine_amount"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1">
+                android:layout_marginTop="5dp">
 
             <EditText
                     android:id="@+id/et_routine_amount"
@@ -47,11 +46,16 @@
         <LinearLayout
                 android:id="@+id/resources"
                 android:layout_width="match_parent" 
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="start"
+                      android:textSize="@dimen/text_size_h1_step_5"
+                      android:text="@string/resource_spinner"/>
 
             <Spinner
                     android:id="@+id/sp_resources"
@@ -65,11 +69,16 @@
         <LinearLayout
                 android:id="@+id/frequency"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_weight="1"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="start"
+                      android:textSize="@dimen/text_size_h1_step_5"
+                      android:text="@string/frequency_spinner"/>
 
             <Spinner
                     android:id="@+id/sp_frequency"

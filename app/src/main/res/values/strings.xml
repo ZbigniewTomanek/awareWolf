@@ -41,4 +41,6 @@
     <string name="please_enter_amount">Wprowadź wartosć</string>
     <string name="please_select_category">Wybierz kategorie</string>
     <string name="frequency_spinner_prompt">Wybierz częstotliwość</string>
+    <string name="frequency_spinner">Częstotliwość</string>
+    <string name="resource_spinner">Oszczędzany zasób</string>
 </resources>

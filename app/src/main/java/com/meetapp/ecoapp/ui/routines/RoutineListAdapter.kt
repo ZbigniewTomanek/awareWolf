@@ -7,17 +7,17 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.meetapp.ecoapp.R
-
-import com.meetapp.ecoapp.database.entities.Resource
+import com.meetapp.ecoapp.database.RoutineRepository
 import com.meetapp.ecoapp.database.entities.Routine
-import com.meetapp.ecoapp.database.entities.RoutineResourceJoin
 import kotlinx.android.synthetic.main.routine_item.view.*
 
-class RoutineListAdapter(routineEvents: RoutineEvents, var routinesList: List<Routine>, var resourcesList: List<Resource>, var rrJoinList: List<RoutineResourceJoin>)
+class RoutineListAdapter(routineEvents: RoutineEvents)
     : RecyclerView.Adapter<RoutineListAdapter.ViewHolder>(), Filterable {
 
     private var filteredRoutineList: List<Routine> = arrayListOf()
     private val listener: RoutineEvents = routineEvents
+    private val repository = RoutineRepository.instance()
+    private var routinesList = repository.getAllRoutinesAsList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.routine_item, parent, false)
@@ -31,9 +31,11 @@ class RoutineListAdapter(routineEvents: RoutineEvents, var routinesList: List<Ro
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val repository = RoutineRepository.instance()
+
         fun bind(routine: Routine, listener: RoutineEvents) {
             itemView.tv_item_title.text = routine.routineName
-            itemView.tv_item_content.text = "chuj"
+            itemView.tv_item_content.text = "Raz na ${repository.getFrequencyName(routine.freqId)}" //TODO poprawić wyświetlania
 
             itemView.iv_item_delete.setOnClickListener {
                 listener.onDeleteClicked(routine)
@@ -45,19 +47,15 @@ class RoutineListAdapter(routineEvents: RoutineEvents, var routinesList: List<Ro
         }
     }
 
-    fun getResourcesNames(routineId: Int): List<String> {
-        val ids = rrJoinList.filter { it.routineId == routineId }.map { it.resourceId }
-        return resourcesList.map { if (it.resourceId in ids) it.resourceName else ""}.filter { it != "" }
-    }
+
 
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(p0: CharSequence?): FilterResults {
+                val rrJoinList = repository.getAllrrJoins()
                 val charString = p0.toString()
                 filteredRoutineList = if (charString.isEmpty()) {
-
                     routinesList
-
                 } else {
                     val filteredList = arrayListOf<Routine>()
                     for (row in routinesList) {
@@ -65,7 +63,7 @@ class RoutineListAdapter(routineEvents: RoutineEvents, var routinesList: List<Ro
 
                         var inRes = false
                         for (resJoin in resources) {
-                            val names =  getResourcesNames(resJoin.resourceId)
+                            val names =  repository.getResourcesNames(resJoin.resourceId)
                             for (resName in names)
                                 if (charString.toLowerCase() in resName)
                                     inRes = true

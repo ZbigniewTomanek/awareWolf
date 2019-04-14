@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.meetapp.ecoapp.R
 import com.meetapp.ecoapp.database.AppDatabase
+import com.meetapp.ecoapp.database.RoutineRepository
 import com.meetapp.ecoapp.database.entities.Frequency
 import com.meetapp.ecoapp.database.entities.Resource
 import com.meetapp.ecoapp.database.entities.Routine
@@ -20,14 +21,17 @@ import org.jetbrains.anko.doAsync
 class CreateRoutineActivity : AppCompatActivity() {
 
     var routine: Routine? = null
-    lateinit var instance: AppDatabase
     lateinit var resources: List<Resource>
     lateinit var frequencies: List<Frequency>
+    val repository = RoutineRepository.instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme_NoActionBar)
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_routine)
+
+        resources = repository.getAllResources()
+        frequencies = repository.getAllFrequenciesList()
 
         val adapterR = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, resources.map { it.resourceName })
         adapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -50,13 +54,13 @@ class CreateRoutineActivity : AppCompatActivity() {
         et_routine_title.setText(routine.routineName)
         et_routine_amount.setText(routine.amountSaved.toString())
 
-        val resource = listOf<String>() // TODO zassać tą listę6
+        val resource = repository.getResourcesNames(routine.routineId!!)
         if (resource.isNotEmpty()){
             sp_resources.setSelection(resources.withIndex().filter { it.value.resourceName == resource[0] }.map { it.index }[0])
         }
 
-        val fName = AppDatabase.getInstance(this).frequencyDao().loadAllByIds(arrayOf(routine.freqId))[0]
-        sp_frequency.setSelection(frequencies.withIndex().filter { it.value == fName }.map { it.index }[0])
+        val fName = repository.getFrequencyName(routine.freqId)
+        sp_frequency.setSelection(frequencies.withIndex().filter { it.value.name == fName }.map { it.index }[0])
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -79,16 +83,6 @@ class CreateRoutineActivity : AppCompatActivity() {
             val id = if (routine != null) routine?.routineId else null
             val rout = Routine(id, et_routine_title.text.toString(),
                 frequencies[sp_frequency.selectedItemPosition].freqId, et_routine_amount.text.toString().toDouble())
-
-
-            doAsync {
-                val inst =  instance
-                inst.routineDao().insert(rout)
-
-                val routineId = inst.routineDao().findByName(routine!!.routineName)
-                inst.routineResourceJoinDao().insert(RoutineResourceJoin(routineId.routineId!!, resources[sp_resources.selectedItemPosition].resourceId))
-            }
-
 
             val intent = Intent()
             intent.putExtra(Constants.INTENT_OBJECT, rout)

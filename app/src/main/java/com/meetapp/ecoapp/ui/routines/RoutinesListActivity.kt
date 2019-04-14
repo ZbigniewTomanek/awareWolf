@@ -2,22 +2,20 @@ package com.meetapp.ecoapp.ui.routines
 
 
 
+import android.app.Activity
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.lifecycle.ViewModelProviders
-
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.meetapp.ecoapp.R
-import com.meetapp.ecoapp.database.AppDatabase
 import com.meetapp.ecoapp.database.RoutineRepository
 import com.meetapp.ecoapp.database.entities.Routine
 import com.meetapp.ecoapp.ui.createRoutine.CreateRoutineActivity
@@ -25,7 +23,7 @@ import com.meetapp.ecoapp.utils.Constants
 import kotlinx.android.synthetic.main.activity_routines_list.*
 import kotlinx.android.synthetic.main.content_main.*
 
-
+private const val TAG = "routineListActivity"
 class RoutinesListActivity : AppCompatActivity(), RoutineListAdapter.RoutineEvents {
 
     private lateinit var routineViewModel: RoutineViewModel
@@ -47,8 +45,7 @@ class RoutinesListActivity : AppCompatActivity(), RoutineListAdapter.RoutineEven
     private fun initList() {
         rv_routine_list.layoutManager = LinearLayoutManager(this)
 
-        routinesAdapter = RoutineListAdapter(this, repository.getAllRoutinesAsList(),
-            repository.getAllResources(), repository.getAllrrJoins())
+        routinesAdapter = RoutineListAdapter(this)
 
         rv_routine_list.adapter = routinesAdapter
 
@@ -78,19 +75,23 @@ class RoutinesListActivity : AppCompatActivity(), RoutineListAdapter.RoutineEven
         startActivityForResult(intent, Constants.INTENT_UPDATE_TODO)
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        if (resultCode == Activity.RESULT_OK) {
-//            val todoRecord = data?.getParcelableExtra<Routine>(Constants.INTENT_OBJECT)!!
-//            when (requestCode) {
-//                Constants.INTENT_CREATE_TODO -> {
-//                    rou.saveTodo(todoRecord)
-//                }
-//                Constants.INTENT_UPDATE_TODO -> {
-//                    todoViewModel.updateTodo(todoRecord)
-//                }
-//            }
-//        }
-//    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            val routine = data?.getParcelableExtra<Routine>(Constants.INTENT_OBJECT)!!
+            when (requestCode) {
+                Constants.INTENT_CREATE_TODO -> {
+                    repository.addRoutine(routine)
+                    Log.d(TAG, "Rutine added")
+                }
+                Constants.INTENT_UPDATE_TODO -> {
+                   repository.updateRoutine(routine)
+                    Log.d(TAG, "Routine updated")
+                }
+            }
+        }
+
+        super.onActivityResult(requestCode, resultCode, data)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_search, menu)
