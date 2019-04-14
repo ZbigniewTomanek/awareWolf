@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import com.meetapp.ecoapp.R
 import com.meetapp.ecoapp.database.AppDatabase
@@ -91,6 +92,13 @@ class CreateRoutineActivity : AppCompatActivity() {
         }
     }
 
+    private fun makeToast(text: String) {
+        val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
+        val tv = toast.view.findViewById<TextView>(android.R.id.message)
+        tv.setBackgroundResource(android.R.color.transparent)
+        toast.show()
+    }
+
     private fun validateFields(): Boolean {
         if (et_routine_title.text.isEmpty()) {
             et_routine_title.error = getString(R.string.please_enter_title)
@@ -104,7 +112,13 @@ class CreateRoutineActivity : AppCompatActivity() {
         }
 
         if (!sp_resources.isSelected) {
-            Toast.makeText(this, getString(R.string.please_select_category), Toast.LENGTH_SHORT).show()
+            makeToast(getString(R.string.please_select_category))
+            return false
+        }
+
+        if (!sp_frequency.isSelected) {
+            makeToast(getString(R.string.please_select_frequency))
+            return false
         }
         return true
     }

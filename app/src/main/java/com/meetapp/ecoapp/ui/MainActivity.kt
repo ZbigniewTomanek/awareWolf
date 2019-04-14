@@ -11,9 +11,11 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.facebook.stetho.Stetho
 import com.meetapp.ecoapp.R
 import com.meetapp.ecoapp.ui.camera.CameraActivity
 import com.meetapp.ecoapp.ui.routines.RoutinesListActivity
+import com.meetapp.ecoapp.ui.tabbar.TabBarActivity
 import org.achartengine.GraphicalView
 import org.achartengine.chart.PieChart
 import org.achartengine.model.CategorySeries
@@ -32,6 +34,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
+
+        Stetho.initializeWithDefaults(this)
 
         if (supportActionBar != null)
             supportActionBar!!.setDisplayShowTitleEnabled(false)
@@ -134,8 +138,18 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun start(view: View) {
-        val intent = Intent(this, RoutinesListActivity::class.java) //TODO
+    fun startCamera(view: View) {
+        val intent = Intent(this, CameraActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun startTabbar(view: View) {
+        val intent = Intent(this, TabBarActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun startRoutines(view: View) {
+        val intent = Intent(this, RoutinesListActivity::class.java)
         startActivity(intent)
     }
 

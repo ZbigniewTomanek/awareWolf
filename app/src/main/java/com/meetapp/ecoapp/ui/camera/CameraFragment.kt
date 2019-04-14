@@ -23,6 +23,7 @@ import android.media.ImageReader
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
+import android.preference.PreferenceManager
 import android.util.Log
 import android.util.Size
 import android.util.SparseIntArray
@@ -48,11 +49,7 @@ import kotlin.collections.ArrayList
 
 
 const val REQUEST_CAMERA_PERMISSION = 1
-const val PIC_FILE_NAME = "pic.jpg"
 
-enum class Storage {
-    SD, ROM
-}
 
 
 class CameraFragment : Fragment(), View.OnClickListener,
@@ -147,8 +144,6 @@ class CameraFragment : Fragment(), View.OnClickListener,
      * This is the output file for our picture.
      */
     private lateinit var file: File
-
-    private var storage = Storage.ROM
 
     /**
      * This a callback object for the [ImageReader]. "onImageAvailable" will be called when a
@@ -263,10 +258,26 @@ class CameraFragment : Fragment(), View.OnClickListener,
                               savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_camera, container, false)
 
+    override fun onClick(p0: View?) {
+        when (p0!!.id) {
+            R.id.picture -> lockFocus()
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<View>(R.id.picture).setOnClickListener(this)
         textureView = view.findViewById(R.id.texture)
         storageToggle = view.findViewById(R.id.storage_toggle)
+
+        val ifSD = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(getString(R.string.store_on_sd), false)
+        if (ifSD)
+            storageToggle.isChecked = true
+
+        storageToggle.setOnClickListener {
+            val curr = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(getString(R.string.store_on_sd), false)
+            PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(getString(R.string.store_on_sd), !curr).apply()
+        }
+
     }
 
 
@@ -659,7 +670,7 @@ class CameraFragment : Fragment(), View.OnClickListener,
                 override fun onCaptureCompleted(session: CameraCaptureSession,
                                                 request: CaptureRequest,
                                                 result: TotalCaptureResult) {
-                    makeToast(getString(R.string.photo_success))
+                    makeToast(getString(R.string.photo_success) + file.toString())
                     Log.d(TAG, file.toString())
                     unlockFocus()
                 }
@@ -698,16 +709,6 @@ class CameraFragment : Fragment(), View.OnClickListener,
 
     }
 
-    override fun onClick(view: View) {
-        when (view.id) {
-            R.id.picture -> lockFocus()
-            R.id.storage_toggle ->
-                storage = if (storageToggle.isChecked)
-                    Storage.SD
-                else
-                    Storage.ROM
-        }
-    }
 
     private fun setAutoFlash(requestBuilder: CaptureRequest.Builder) {
         if (flashSupported) {

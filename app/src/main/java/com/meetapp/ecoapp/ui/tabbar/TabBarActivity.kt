@@ -12,7 +12,7 @@ import com.meetapp.ecoapp.R
 import com.meetapp.ecoapp.ui.MainActivity
 
 
-private const val TAG = "TBB"
+private const val TAG = "TabBarActivity"
 
 class TabBarActivity : AppCompatActivity(), PhotoFragment.OnListFragmentInteractionListener {
     lateinit var viewPager: ViewPager

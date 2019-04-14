@@ -15,13 +15,13 @@
     <string name="request_permission">Zezwolić aplkiacji na dostęp do aparatu?</string>
     <string name="camera_error">To urządzenie posiada niekompatybilny system</string>
     <string name="config_error">Błąd</string>
-    <string name="photo_success">Zapisano plik!</string>
+    <string name="photo_success">Zapisano plik: </string>
     <string name="switch_internal_storage">ROM</string>
     <string name="switch_external_storage">SD</string>
     <string name="switch_storage_label">Zapis na karcie SD</string>
-    <string name="day">Dzień</string>
-    <string name="week">Tydzień</string>
-    <string name="month">Miesiąc</string>
+    <string name="day">dzień</string>
+    <string name="week">tydzień</string>
+    <string name="month">miesiąc</string>
     <string name="water">Woda</string>
     <string name="gas">Gaz</string>
     <string name="plastic">Plastik</string>
@@ -43,4 +43,10 @@
     <string name="frequency_spinner_prompt">Wybierz częstotliwość</string>
     <string name="frequency_spinner">Częstotliwość</string>
     <string name="resource_spinner">Oszczędzany zasób</string>
+    <string name="tabbar_button_description">Shows gallery of potential futures</string>
+    <string name="camera_button_description">Allows you to take photos</string>
+    <string name="routines_button_description">Your eco routines manager</string>
+    <string name="storage_preference">storage_pref</string>
+    <string name="store_on_sd">SD</string>
+    <string name="please_select_frequency">Zaznacz kategorię!</string>
 </resources>

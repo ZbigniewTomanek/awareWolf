@@ -56,8 +56,9 @@ dependencies {
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
     implementation group: 'org.achartengine', name: 'achartengine', version: '1.2.0'
 
-    implementation "android.arch.persistence.room:runtime:1.1.1"
+    implementation 'com.facebook.stetho:stetho:1.5.1'
 
+    implementation "android.arch.persistence.room:runtime:1.1.1"
     implementation "org.jetbrains.anko:anko:0.10.4"
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.0'
