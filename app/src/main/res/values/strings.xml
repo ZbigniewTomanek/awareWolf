@@ -48,4 +48,10 @@
     <string name="store_on_sd">SD</string>
     <string name="please_select_frequency">Zaznacz kategorię!</string>
     <string name="your_routines">Twoje nawyki</string>
+    <string name="definition_button_description">Gives random definition</string>
+    <string name="show_info_dialog_title">Czy ta definicja pasuje?</string>
+    <string name="positive_answer">Tak</string>
+    <string name="negative_answer">Nie</string>
+    <string name="load_new_definition_message">Ładuję nową definicję</string>
+    <string name="no_more_definition_message">Nie mam więcej :(</string>
 </resources>

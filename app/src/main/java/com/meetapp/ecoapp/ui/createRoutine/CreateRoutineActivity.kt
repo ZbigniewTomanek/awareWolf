@@ -16,6 +16,7 @@ import com.meetapp.ecoapp.database.entities.Resource
 import com.meetapp.ecoapp.database.entities.Routine
 import com.meetapp.ecoapp.database.entities.RoutineResourceJoin
 import com.meetapp.ecoapp.utils.Constants
+import com.meetapp.ecoapp.utils.Tools.makeToast
 import kotlinx.android.synthetic.main.activity_create_routine.*
 import org.jetbrains.anko.doAsync
 
@@ -94,13 +95,6 @@ class CreateRoutineActivity : AppCompatActivity() {
         }
     }
 
-    private fun makeToast(text: String) {
-        val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
-        val tv = toast.view.findViewById<TextView>(android.R.id.message)
-        tv.setBackgroundResource(android.R.color.transparent)
-        toast.show()
-    }
-
     private fun validateFields(): Boolean {
         if (et_routine_title.text.isEmpty()) {
             et_routine_title.error = getString(R.string.please_enter_title)
@@ -114,12 +108,12 @@ class CreateRoutineActivity : AppCompatActivity() {
         }
 
         if (!sp_resources.isSelected && !edit) {
-            makeToast(getString(R.string.please_select_category))
+            makeToast(getString(R.string.please_select_category), this)
             return false
         }
 
         if (!sp_frequency.isSelected && !edit) {
-            makeToast(getString(R.string.please_select_frequency))
+            makeToast(getString(R.string.please_select_frequency), this)
             return false
         }
         return true

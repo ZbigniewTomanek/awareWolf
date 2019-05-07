@@ -16,10 +16,23 @@
               android:gravity="center"/>
 
     <LinearLayout
-            android:id="@+id/pieChartView"
+            android:id="@+id/pie_chart_view"
             style="@style/session_chart_style"
             android:layout_centerInParent="true"
             android:orientation="vertical" />
+
+    <ImageButton android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/definition_button"
+                 android:paddingTop="25dp"
+                 android:contentDescription="@string/definition_button_description"
+                 android:src="@drawable/dice_icon"
+                 style="@android:style/Widget.Material.Light.Button.Borderless"
+                 android:onClick="giveRandomDefinition"
+                 android:layout_centerHorizontal="true"
+                 android:layout_below="@id/pie_chart_view"/>
+
+
 
     <FrameLayout android:layout_width="match_parent"
                  android:layout_alignParentBottom="true"
