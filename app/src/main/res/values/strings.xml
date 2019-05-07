@@ -8,8 +8,6 @@
     <string name="user_bad_choices">ubc</string>
     <string name="message_main">Co wybierasz Ty?</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="picture">Zdjęcie</string>
     <string name="description_info">Info</string>
     <string name="request_permission">Zezwolić aplkiacji na dostęp do aparatu?</string>
@@ -49,4 +47,5 @@
     <string name="storage_preference">storage_pref</string>
     <string name="store_on_sd">SD</string>
     <string name="please_select_frequency">Zaznacz kategorię!</string>
+    <string name="your_routines">Twoje nawyki</string>
 </resources>

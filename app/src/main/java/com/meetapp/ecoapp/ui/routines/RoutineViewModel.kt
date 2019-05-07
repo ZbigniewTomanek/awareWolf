@@ -21,5 +21,10 @@ class RoutineViewModel(application: Application) : AndroidViewModel(application)
         repository.deleteRoutine(routine)
     }
 
+    fun updateRoutine(routine: Routine) {
+        repository.updateRoutine(routine)
+    }
+
     fun getAllRoutinesList() = routinesList
+
 }

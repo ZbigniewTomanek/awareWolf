@@ -25,6 +25,7 @@ class CreateRoutineActivity : AppCompatActivity() {
     lateinit var resources: List<Resource>
     lateinit var frequencies: List<Frequency>
     val repository = RoutineRepository.instance()
+    var edit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
@@ -44,6 +45,7 @@ class CreateRoutineActivity : AppCompatActivity() {
 
         val intent = intent
         if (intent != null && intent.hasExtra(Constants.INTENT_OBJECT)) {
+            edit = true
             val routine: Routine = intent.getParcelableExtra(Constants.INTENT_OBJECT)
             this.routine = routine
             prePopulateData(routine)
@@ -111,12 +113,12 @@ class CreateRoutineActivity : AppCompatActivity() {
             return false
         }
 
-        if (!sp_resources.isSelected) {
+        if (!sp_resources.isSelected && !edit) {
             makeToast(getString(R.string.please_select_category))
             return false
         }
 
-        if (!sp_frequency.isSelected) {
+        if (!sp_frequency.isSelected && !edit) {
             makeToast(getString(R.string.please_select_frequency))
             return false
         }

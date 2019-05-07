@@ -24,8 +24,6 @@ import androidx.room.PrimaryKey
     )
 
 class RoutineResourceJoin(routineId: Int, resourceId: Int) {
-
     var routineId: Int = routineId
     var resourceId: Int = resourceId
-
 }

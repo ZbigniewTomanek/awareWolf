@@ -39,6 +39,9 @@ class RoutinesListActivity : AppCompatActivity(), RoutineListAdapter.RoutineEven
         RoutineRepository.initInstance(application)
         repository = RoutineRepository.instance()
 
+        if (supportActionBar != null)
+            supportActionBar!!.title = getString(R.string.your_routines)
+
         initList()
     }
 
@@ -80,11 +83,11 @@ class RoutinesListActivity : AppCompatActivity(), RoutineListAdapter.RoutineEven
             val routine = data?.getParcelableExtra<Routine>(Constants.INTENT_OBJECT)!!
             when (requestCode) {
                 Constants.INTENT_CREATE_TODO -> {
-                    repository.addRoutine(routine)
+                    routineViewModel.saveRoutine(routine)
                     Log.d(TAG, "Rutine added")
                 }
                 Constants.INTENT_UPDATE_TODO -> {
-                   repository.updateRoutine(routine)
+                    routineViewModel.updateRoutine(routine)
                     Log.d(TAG, "Routine updated")
                 }
             }

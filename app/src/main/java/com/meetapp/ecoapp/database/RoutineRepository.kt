@@ -18,7 +18,7 @@ import kotlinx.coroutines.runBlocking
 
 private const val TAG = "RoutineRepository"
 
-class RoutineRepository private constructor (application: Application) {
+class RoutineRepository private constructor(application: Application) {
 
     private val routineDao: RoutineDao
     private val resourceDao: ResourceDao
@@ -39,7 +39,7 @@ class RoutineRepository private constructor (application: Application) {
                 INSTANCE = RoutineRepository(application)
         }
 
-        fun instance(): RoutineRepository = if (INSTANCE == null) throw Exception() else INSTANCE!!
+        fun instance(): RoutineRepository = INSTANCE ?: throw Exception()
 
     }
 
@@ -63,7 +63,7 @@ class RoutineRepository private constructor (application: Application) {
         }
     }
 
-    fun initDatabse(app: Application)  = runBlocking {
+    fun initDatabse(app: Application) = runBlocking {
         Log.d(TAG, "Starting databse")
         Log.d(TAG, allFrequencies.toString())
 
@@ -94,7 +94,7 @@ class RoutineRepository private constructor (application: Application) {
             Log.d(TAG, "Adding routines")
 
             Log.d(TAG, allFrequencies.map { it.freqId.toString() }.toString())
-            Log.d(TAG, allResources.map {  it.resourceId.toString() }.toString())
+            Log.d(TAG, allResources.map { it.resourceId.toString() }.toString())
 
             val routines = listOf(
                 Routine(null, app.getString(R.string.routine_teeth_brush), 1, 2.0),
@@ -183,11 +183,10 @@ class RoutineRepository private constructor (application: Application) {
 
     fun getResourcesNames(routineId: Int): List<String> {
         val ids = allrrJoin.filter { it.routineId == routineId }.map { it.resourceId }
-        return allResources.map { if (it.resourceId in ids) it.resourceName else ""}.filter { it != "" }
+        return allResources.map { if (it.resourceId in ids) it.resourceName else "" }.filter { it != "" }
     }
 
     fun getFrequencyName(freqId: Int): String = allFrequencies.filter { it.freqId == freqId }.map { it.name }[0] ?: ""
-
 
 
     fun getAllRoutinesList() = allRoutines
