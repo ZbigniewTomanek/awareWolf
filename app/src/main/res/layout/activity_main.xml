@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.MainActivity">
+        tools:context=".ui.main.MainActivity">
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
                  android:contentDescription="@string/definition_button_description"
                  android:src="@drawable/dice_icon"
                  style="@android:style/Widget.Material.Light.Button.Borderless"
-                 android:onClick="giveRandomDefinition"
+                 android:onClick="giveDefinition"
                  android:layout_centerHorizontal="true"
                  android:layout_below="@id/pie_chart_view"/>
 

@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp.ui.definition
+package com.meetapp.ecoapp.ui.main
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import io.reactivex.Observable

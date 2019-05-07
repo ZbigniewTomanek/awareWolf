@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.meetapp.ecoapp.R
-import com.meetapp.ecoapp.ui.MainActivity
+import com.meetapp.ecoapp.ui.main.MainActivity
 
 
 private const val TAG = "TabBarActivity"

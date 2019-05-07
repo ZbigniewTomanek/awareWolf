@@ -1,4 +1,4 @@
-package com.meetapp.ecoapp.ui.definition
+package com.meetapp.ecoapp.ui.main
 
 object Model {
     data class Result(val query: Query)
