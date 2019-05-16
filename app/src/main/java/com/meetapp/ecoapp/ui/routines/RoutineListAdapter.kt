@@ -35,7 +35,7 @@ class RoutineListAdapter(routineEvents: RoutineEvents)
 
         fun bind(routine: Routine, listener: RoutineEvents) {
             itemView.tv_item_title.text = routine.routineName
-            itemView.tv_item_content.text = "Raz na ${repository.getFrequencyName(routine.freqId)}" //TODO poprawić wyświetlania
+            itemView.tv_item_content.text = "Raz na ${repository.getFrequencyName(routine.freqId)}"
 
             itemView.iv_item_delete.setOnClickListener {
                 listener.onDeleteClicked(routine)

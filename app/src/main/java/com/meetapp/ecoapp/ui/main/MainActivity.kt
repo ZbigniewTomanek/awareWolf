@@ -1,5 +1,6 @@
 package com.meetapp.ecoapp.ui.main
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -15,17 +16,18 @@ import com.meetapp.ecoapp.R
 import com.meetapp.ecoapp.ui.camera.CameraActivity
 import com.meetapp.ecoapp.ui.routines.RoutinesListActivity
 import com.meetapp.ecoapp.ui.tabbar.TabBarActivity
+import com.meetapp.ecoapp.utils.Tools
 import org.achartengine.GraphicalView
 import org.achartengine.chart.PieChart
 import org.achartengine.model.CategorySeries
 import org.achartengine.renderer.DefaultRenderer
 import org.achartengine.renderer.SimpleSeriesRenderer
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jsoup.Jsoup
 
 
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity(), MainView {
-
     private val COLORS = intArrayOf(Color.rgb(56, 128, 58), Color.rgb(174,0,0), Color.rgb(69, 90, 100))
     private val NAME_LIST = arrayOf("Dobro:", "Zło:")
 
@@ -163,6 +165,42 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun giveDefinition(view: View) {
         presenter.onClick(this)
+    }
+
+
+    private fun html2String(html: String): String = Jsoup.parse(html).text()
+    override fun buildInfoDialog(elements: List<Model.Element>) {
+        val element = elements.random()
+        val title = html2String(element.title)
+        val snippet = html2String(element.snippet)
+        var alert: AlertDialog? = null
+
+        fun disimiss() {
+            alert?.dismiss()
+        }
+
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setMessage("$snippet.\n${this.getString(R.string.show_info_dialog_title)}")
+            .setCancelable(false)
+            .setPositiveButton(this.getString(R.string.positive_answer)) { _, _ ->  disimiss() }
+            .setNegativeButton(this.getString(R.string.negative_answer)) { _, _ ->
+                disimiss()
+                val newElems = elements.toMutableList()
+                newElems.remove(element)
+                if (newElems.isEmpty())
+                    Tools.makeToast(this.getString(R.string.no_more_definition_message), this)
+                else {
+                    Tools.makeToast(this.getString(R.string.load_new_definition_message), this)
+                    buildInfoDialog(newElems.toList())
+                }
+
+            }
+
+        alert = dialogBuilder.create()
+        alert.setTitle(title)
+
+
+        alert.show()
     }
 
 
