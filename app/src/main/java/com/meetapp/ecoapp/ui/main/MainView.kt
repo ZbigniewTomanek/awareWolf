@@ -4,5 +4,5 @@ import android.view.View
 
 interface MainView {
     fun giveDefinition(view: View)
-    fun buildInfoDialog(elements: List<Model.Element>)
+    fun buildInfoDialog(elements: List<WikiModel.Element>)
 }

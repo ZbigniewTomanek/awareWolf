@@ -1,6 +1,5 @@
 package com.meetapp.ecoapp.ui.main
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -34,6 +33,7 @@ class MainActivity : AppCompatActivity(), MainView {
     private var mSeries = CategorySeries("")
     private val mRenderer = DefaultRenderer()
     private var mChartView : GraphicalView? = null
+
 
     val presenter = MainPresenter(this)
 
@@ -169,7 +169,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
 
     private fun html2String(html: String): String = Jsoup.parse(html).text()
-    override fun buildInfoDialog(elements: List<Model.Element>) {
+    override fun buildInfoDialog(elements: List<WikiModel.Element>) {
         val element = elements.random()
         val title = html2String(element.title)
         val snippet = html2String(element.snippet)

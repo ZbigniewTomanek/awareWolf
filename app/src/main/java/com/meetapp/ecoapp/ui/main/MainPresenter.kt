@@ -1,22 +1,21 @@
 package com.meetapp.ecoapp.ui.main
 
 import android.content.Context
+import com.meetapp.ecoapp.dagger.BasePresenterInjector
 
-import androidx.appcompat.app.AlertDialog
-import com.meetapp.ecoapp.R
+import com.meetapp.ecoapp.network.WikiService
 import com.meetapp.ecoapp.utils.Tools
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import org.jsoup.Jsoup
+import javax.inject.Inject
 
-class MainPresenter(var mainView: MainView?) {
+class MainPresenter(var mainView: MainView?): BasePresenterInjector() {
 
     private var disposable: Disposable? = null
 
-    private val wikiApiServe by lazy {
-        WikiService.create()
-    }
+    @Inject
+    lateinit var wikiService: WikiService
 
     fun onDispose() {
         disposable?.dispose()
@@ -27,7 +26,7 @@ class MainPresenter(var mainView: MainView?) {
         "studnia", "dno", "pokot", "tulpa", "ił", "polska", "ziemniak", "korea północna")
 
     fun onClick(ctx: Context) {
-        disposable = wikiApiServe.loadDefinitions("query", "json", "search", keyWords.random())
+        disposable = wikiService.loadDefinitions("query", "json", "search", keyWords.random())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
