@@ -70,7 +70,6 @@ class RoutinesListActivity : AppCompatActivity(), RoutineListAdapter.RoutineEven
         routineViewModel.deleteRoutine(routine)
     }
 
-    //Callback when user clicks on view note
     override fun onViewClicked(routine: Routine) {
         resetSearchView()
         val intent = Intent(this@RoutinesListActivity, CreateRoutineActivity::class.java)

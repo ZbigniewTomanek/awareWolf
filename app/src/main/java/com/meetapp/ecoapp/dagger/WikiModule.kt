@@ -38,7 +38,7 @@ object WikiModule {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://pl.wikipedia.org/w/")
+            .baseUrl(BASE_URL)
             .build()
     }
 }

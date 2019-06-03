@@ -107,12 +107,12 @@ class CreateRoutineActivity : AppCompatActivity() {
             return false
         }
 
-        if (!sp_resources.isSelected && !edit) {
+        if (sp_resources.selectedItem == null && !edit) {
             makeToast(getString(R.string.please_select_category), this)
             return false
         }
 
-        if (!sp_frequency.isSelected && !edit) {
+        if (sp_resources.selectedItem == null && !edit) {
             makeToast(getString(R.string.please_select_frequency), this)
             return false
         }

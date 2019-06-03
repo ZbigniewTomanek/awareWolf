@@ -58,7 +58,8 @@ class RoutineRepository private constructor(application: Application) {
                 allrrJoin = rrJoinDao.all
                 allRoutinesList = routineDao.loadAllAsList()
 
-                initDatabse(application)
+                //initDatabse(application)
+                //base was inited only once to load data without involving ui
             }
         }
     }
@@ -110,9 +111,9 @@ class RoutineRepository private constructor(application: Application) {
             Log.d(TAG, "Adding resources")
 
             val routineResourceJoin = listOf(
-                RoutineResourceJoin(37, 1),
-                RoutineResourceJoin(38, 4),
-                RoutineResourceJoin(39, 3)
+                RoutineResourceJoin(41, 1),
+                RoutineResourceJoin(42, 4),
+                RoutineResourceJoin(43, 3)
             )
 
             addRoutineResourceJoins(routineResourceJoin)

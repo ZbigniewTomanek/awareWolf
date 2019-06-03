@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.routine_item.view.*
 class RoutineListAdapter(routineEvents: RoutineEvents)
     : RecyclerView.Adapter<RoutineListAdapter.ViewHolder>(), Filterable {
 
-    private var filteredRoutineList: List<Routine> = arrayListOf()
+    private var filteredRoutineList: List<Routine> = listOf()
     private val listener: RoutineEvents = routineEvents
     private val repository = RoutineRepository.instance()
     private var routinesList = repository.getAllRoutinesAsList()
