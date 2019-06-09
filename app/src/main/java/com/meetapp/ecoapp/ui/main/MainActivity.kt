@@ -1,32 +1,36 @@
 package com.meetapp.ecoapp.ui.main
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import com.facebook.stetho.Stetho
 import com.meetapp.ecoapp.R
+import com.meetapp.ecoapp.network.WikiService
 import com.meetapp.ecoapp.ui.camera.CameraActivity
 import com.meetapp.ecoapp.ui.routines.RoutinesListActivity
 import com.meetapp.ecoapp.ui.tabbar.TabBarActivity
 import com.meetapp.ecoapp.utils.Tools
+import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import org.achartengine.GraphicalView
 import org.achartengine.chart.PieChart
 import org.achartengine.model.CategorySeries
 import org.achartengine.renderer.DefaultRenderer
 import org.achartengine.renderer.SimpleSeriesRenderer
-import kotlinx.android.synthetic.main.activity_main.*
 import org.jsoup.Jsoup
+import org.mockito.Mock
+import javax.inject.Inject
 
 
 private const val TAG = "MainActivity"
-class MainActivity : AppCompatActivity(), MainView {
+class MainActivity : DaggerAppCompatActivity(), MainView {
+
     private val COLORS = intArrayOf(Color.rgb(56, 128, 58), Color.rgb(174,0,0), Color.rgb(69, 90, 100))
     private val NAME_LIST = arrayOf("Dobro:", "Zło:")
 
@@ -34,8 +38,13 @@ class MainActivity : AppCompatActivity(), MainView {
     private val mRenderer = DefaultRenderer()
     private var mChartView : GraphicalView? = null
 
+    @Inject
+    lateinit var wikiService: WikiService
 
-    val presenter = MainPresenter(this)
+    @Inject
+    lateinit var preferences: SharedPreferences
+
+    private lateinit var presenter: MainPresenter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,13 +57,14 @@ class MainActivity : AppCompatActivity(), MainView {
             supportActionBar!!.setDisplayShowTitleEnabled(false)
         setContentView(R.layout.activity_main)
 
+        presenter =  MainPresenter(this, wikiService)
+
         setPieChart()
     }
 
-    private fun setPieChart()
-    {
-        val numOfCorrect = PreferenceManager.getDefaultSharedPreferences(this).getInt(getString(R.string.user_good_choices), 1)
-        val namOfIncorrect = PreferenceManager.getDefaultSharedPreferences(this).getInt(getString(R.string.user_bad_choices), 1)
+    private fun setPieChart() {
+        val numOfCorrect = preferences.getInt(getString(R.string.user_good_choices), 1)
+        val namOfIncorrect = preferences.getInt(getString(R.string.user_bad_choices), 1)
 
         mSeries.clear()
         mRenderer.removeAllRenderers()
@@ -69,16 +79,14 @@ class MainActivity : AppCompatActivity(), MainView {
         mRenderer.isZoomEnabled = false
         mRenderer.isPanEnabled = false
 
-        if(numOfCorrect == 0 && namOfIncorrect == 0)
-        {
+        if(numOfCorrect == 0 && namOfIncorrect == 0) {
             mRenderer.isShowLabels = false
             mSeries.add("", 1.toDouble())
             val rendererLack = SimpleSeriesRenderer()
             rendererLack.color = COLORS[2]
             mRenderer.addSeriesRenderer(rendererLack)
         }
-        else
-        {
+        else {
             mSeries.add("${NAME_LIST[0]} $numOfCorrect", numOfCorrect.toDouble())
             val rendererCorrect = SimpleSeriesRenderer()
             rendererCorrect.color = COLORS[0]
@@ -163,10 +171,16 @@ class MainActivity : AppCompatActivity(), MainView {
         startActivity(intent)
     }
 
+    private val keyWords = listOf("pies", "ekologia", "sudan", "kot", "tygrys", "katastrofa",
+        "studnia", "dno", "pokot", "tulpa", "ił", "polska", "ziemniak", "korea północna")
+
     override fun giveDefinition(view: View) {
-        presenter.onClick(this)
+        presenter.searchDefinition(keyWords.random())
     }
 
+    override fun showErrorToast(message: String) {
+        Tools.makeToast(message, this)
+    }
 
     private fun html2String(html: String): String = Jsoup.parse(html).text()
     override fun buildInfoDialog(elements: List<WikiModel.Element>) {

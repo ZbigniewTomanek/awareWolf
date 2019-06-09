@@ -45,14 +45,16 @@ class RoutinesListActivity : AppCompatActivity(), RoutineListAdapter.RoutineEven
         initList()
     }
 
-    private fun initList() {
+    private fun initList() {2
         rv_routine_list.layoutManager = LinearLayoutManager(this)
 
         routinesAdapter = RoutineListAdapter(this)
 
         rv_routine_list.adapter = routinesAdapter
 
-        routineViewModel = ViewModelProviders.of(this).get(RoutineViewModel::class.java)
+        routineViewModel = ViewModelProviders.
+            of(this, RoutineViewModelFactory(RoutineRepository.instance()))
+            .get(RoutineViewModel::class.java)
 
         routineViewModel.getAllRoutinesList().observe(this, Observer {
             routinesAdapter.setAllRoutineItems(it)
