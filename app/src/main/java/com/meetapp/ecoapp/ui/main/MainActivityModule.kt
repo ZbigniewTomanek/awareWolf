@@ -18,23 +18,27 @@ class MainActivityModule {
 
         @JvmStatic
         @Provides
-        fun providePostApi(retrofit: Retrofit): WikiService {
+        fun provideHTTpClient(): OkHttpClient = OkHttpClient.Builder()
+            .addNetworkInterceptor(StethoInterceptor())
+            .build()
+
+        @JvmStatic
+        @Provides
+        fun provideRetrofitInterface(client: OkHttpClient): Retrofit = Retrofit.Builder()
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(BASE_URL)
+                .build()
+
+        @JvmStatic
+        @Provides
+        fun provideWikiService(retrofit: Retrofit): WikiService {
             return retrofit.create(WikiService::class.java)
         }
 
         @JvmStatic
         @Provides
-        fun provideRetrofitInterface(): Retrofit {
-            val okHttpClient = OkHttpClient.Builder()
-                .addNetworkInterceptor(StethoInterceptor())
-                .build()
-
-            return Retrofit.Builder()
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(BASE_URL)
-                .build()
-        }
+        fun provideMainPresenter(wikiService: WikiService): MainPresenter = MainPresenter(wikiService)
     }
 }

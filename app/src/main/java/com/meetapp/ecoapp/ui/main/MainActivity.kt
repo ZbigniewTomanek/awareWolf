@@ -11,7 +11,6 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.facebook.stetho.Stetho
 import com.meetapp.ecoapp.R
-import com.meetapp.ecoapp.network.WikiService
 import com.meetapp.ecoapp.ui.camera.CameraActivity
 import com.meetapp.ecoapp.ui.routines.RoutinesListActivity
 import com.meetapp.ecoapp.ui.tabbar.TabBarActivity
@@ -24,7 +23,6 @@ import org.achartengine.model.CategorySeries
 import org.achartengine.renderer.DefaultRenderer
 import org.achartengine.renderer.SimpleSeriesRenderer
 import org.jsoup.Jsoup
-import org.mockito.Mock
 import javax.inject.Inject
 
 
@@ -39,12 +37,10 @@ class MainActivity : DaggerAppCompatActivity(), MainView {
     private var mChartView : GraphicalView? = null
 
     @Inject
-    lateinit var wikiService: WikiService
-
-    @Inject
     lateinit var preferences: SharedPreferences
 
-    private lateinit var presenter: MainPresenter
+    @Inject
+    lateinit var presenter: MainPresenter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +53,7 @@ class MainActivity : DaggerAppCompatActivity(), MainView {
             supportActionBar!!.setDisplayShowTitleEnabled(false)
         setContentView(R.layout.activity_main)
 
-        presenter =  MainPresenter(this, wikiService)
+        presenter.attach(this)
 
         setPieChart()
     }
